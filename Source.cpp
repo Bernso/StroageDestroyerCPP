@@ -8,7 +8,7 @@
 using namespace std;
 
 int wait(int timeToWait) {
-    // Wait for 1 second
+    // Wait for x seconds
     this_thread::sleep_for(chrono::seconds(timeToWait));
 
     return 0;
