@@ -46,7 +46,7 @@ void create_files(const filesystem::path& base_path) {
             ofstream file(file_path);
             
             
-            file << string(100000000, 'b');
+            file << string(10000000, 'b'); //100000000 for 1GB files, 10000000
              
             file.close();
             if (file_num < 10) {
